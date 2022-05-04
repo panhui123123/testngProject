@@ -1,20 +1,16 @@
-package org.example;
+package com.example;
 
 //import org.junit.Test;
 //import org.junit.Assert;
-
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import netscape.javascript.JSObject;
 import org.apache.http.HttpEntity;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
-import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
@@ -86,22 +82,24 @@ public class AppTest {
 //        }
     }
 
-    @Test
+    @Test(description = "get请求", timeOut = 2000)
     public void testGet() throws IOException {
+        // 声明url
         String url = "https://www.baidu.com";
-        // 创建httpclient
-        CloseableHttpClient httpclient = HttpClients.createDefault();
-        // 创建HttpGet
+        // 创建get请求实例
         HttpGet httpGetTest1 = new HttpGet(url);
-        // 请求执行，获取响应
+        // 创建httpclient客户端对象
+        CloseableHttpClient httpclient = HttpClients.createDefault();
+        //请求执行，获取响应，这里的response是一大坨东西，类似于你用python response = requests.get(url)之后得到的这个response对象
         CloseableHttpResponse response =  httpclient.execute(httpGetTest1);
         // 获取响应实体，这里获取的是一个对象
         HttpEntity entity = response.getEntity();
         // 用EntityUtils工具转化为文本
         String text = EntityUtils.toString(entity);
         System.out.println(text);
-        // 获取响应码
+        // 获取响应码，类似于python response.status_code
         int code = response.getStatusLine().getStatusCode();
+        // 断言，这个写法很像python unittest里面的断言写法
         Assert.assertEquals(code, 200);
         Assert.assertTrue(text.contains("www"));
         response.close();
@@ -113,23 +111,32 @@ public class AppTest {
         // post请求，json提交
         // 声明要请求的url
         String url = "http://api.kr-cell.net/login-register/login-by-phone";
-        // 创建httpclient对象
-        CloseableHttpClient httpclient = HttpClients.createDefault();
         // 创建一个post请求实例
         HttpPost httpPostTest1 = new HttpPost(url);
-        // 为请求添加头信息
+        // 为post请求添加头信息
         httpPostTest1.addHeader("Content-Type", "application/json;charset=utf-8");
         // 创建参数
         JSONObject json = new JSONObject();
         json.put("phone", "10000000185");
         json.put("password", "111111");
-        // 格式化参数内容并且添加
+        // 为post请求格式化参数内容并且添加
         httpPostTest1.setEntity(new StringEntity(json.toString(), "UTF-8"));
-        // 发送请求
+        // 创建httpclient客户端对象
+        CloseableHttpClient httpclient = HttpClients.createDefault();
+        // 发送post请求得到response，这里的response是一大坨东西
         CloseableHttpResponse response = httpclient.execute(httpPostTest1);
+        // response.getEntity()是响应实体内容
         HttpEntity entity = response.getEntity();
+        // 转为为字符串
         String text = EntityUtils.toString(entity);
-        System.out.println(text);
+        // 创建json对象，将响应实体内容的字符串对象序列化为json对象
+        JSONObject responseJson = JSON.parseObject(text);
+        //
+        System.out.println(responseJson.getClass().getName());
+        // 断言
+        Assert.assertTrue((Boolean) responseJson.get("result"));
+        Assert.assertEquals(responseJson.get("errorCode"), 0);
+        Assert.assertEquals(responseJson.get("errorMsg"), "成功");
         response.close();
         httpclient.close();
     }
