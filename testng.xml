@@ -3,10 +3,12 @@
 <suite name="All Test Suite">
     <test verbose="2" preserve-order="true" name="D:/testngProject">
         <classes>
-            <class name="com.example.AppTest">
+            <class name="com.testng.testcases.DemoCase">
                 <methods>
-                    <include name="testGet"/>
+                    <include name="testDemo"/>
                 </methods>
+            </class>
+            <class name="com.testng.testcases.LoginCase">
             </class>
         </classes>
     </test>

@@ -1,4 +1,4 @@
-package com.example;
+package com.testng.example;
 
 //import org.junit.Test;
 //import org.junit.Assert;
@@ -18,10 +18,7 @@ import org.testng.annotations.Test;
 import org.testng.annotations.*;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 
 /**
@@ -133,13 +130,22 @@ public class AppTest {
         JSONObject responseJson = JSON.parseObject(text);
         //
         System.out.println(responseJson.getClass().getName());
+        System.out.println(responseJson);
         // 断言
         Assert.assertTrue((Boolean) responseJson.get("result"));
         Assert.assertEquals(responseJson.get("errorCode"), 0);
         Assert.assertEquals(responseJson.get("errorMsg"), "成功");
+        Assert.assertEquals(responseJson.getJSONObject("avatarInfo").get("isGif"), false);
         response.close();
         httpclient.close();
     }
+
+//    public static void main(String[] args) {
+//        String path = System.getProperty("user.dir") + "\\" + "src";
+//        System.out.println(System.getProperty("user.dir"));
+//        System.out.println(path);
+//
+//    }
 
 
 }
