@@ -11,9 +11,10 @@ import org.testng.annotations.Test;
 public class LoginCase {
     // 注解表示参数化为datas，超时时间为3000
     @Test(dataProvider = "datas", timeOut = 3000, alwaysRun = true)
-    public void testLogin(String method, String url, String header, String params) throws Exception {
+    public void testLogin(Object[] testdata) throws Exception {
         // 发送请求
-        Object response = HttpRequestUtils.httpRequest(method, url, header, params);
+        Object response = HttpRequestUtils.httpRequest(testdata[2].toString(), testdata[3].toString(),
+                testdata[4].toString(), testdata[5].toString());
         System.out.println(response);
         if (response instanceof String){
             Assert.assertTrue(((String) response).contains("www"));

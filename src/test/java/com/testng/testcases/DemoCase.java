@@ -10,9 +10,10 @@ import org.testng.annotations.Test;
 
 public class DemoCase {
     @Test(dataProvider = "datas", timeOut = 3000, alwaysRun = true)
-    public void testDemo(String method, String url, String header, String params) throws Exception {
+    public void testDemo(Object[] testdata) throws Exception {
         // 发送请求
-        Object response = HttpRequestUtils.httpRequest(method, url, header, params);
+        Object response = HttpRequestUtils.httpRequest(testdata[2].toString(), testdata[3].toString(),
+                testdata[4].toString(), testdata[5].toString());
         System.out.println(response);
         if (response instanceof String){
             Assert.assertTrue(((String) response).contains("www"));
