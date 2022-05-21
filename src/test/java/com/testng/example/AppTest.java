@@ -4,6 +4,9 @@ package com.testng.example;
 //import org.junit.Assert;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -24,6 +27,7 @@ import java.util.*;
 /**
  * Unit test for simple App.
  */
+@Epic("测试大类")
 public class AppTest {
     /**
      * Rigorous Test :-)
@@ -39,6 +43,8 @@ public class AppTest {
     }
 
     @Test
+    @Feature("test001测试")
+    @Description("这个是test001的测试描述")
     public void test001() {
         Assert.assertTrue(true);
         System.out.println("111");
@@ -144,8 +150,18 @@ public class AppTest {
 //        String path = System.getProperty("user.dir") + "\\" + "src";
 //        System.out.println(System.getProperty("user.dir"));
 //        System.out.println(path);
-//
-//    }
+//        String test = "unknown";
+//        try {
+//            int a = 1 / 0;
+//        }
+//        catch (Exception e){
+//            e.printStackTrace();
+//            test = "failed";
+//        }
+//        finally {
+//            System.out.println(test);
+//        }
+
 
 
 }

@@ -82,8 +82,9 @@ public class ExcelUtils {
                 datas[i-1][3] = urlCellValue;
                 datas[i-1][4] = headerCellValue;
                 datas[i-1][5] = paramCellValue;
-                datas[i-1][7] = expected1CellValue;
-                datas[i-1][8] = expected2CellValue;
+                datas[i-1][6] = expected1CellValue;
+                datas[i-1][7] = expected2CellValue;
+                datas[i-1][8] = responseBodyCell;
                 datas[i-1][9] = resultCellValue;
                 datas[i-1][10] = relyCellValue;
             }

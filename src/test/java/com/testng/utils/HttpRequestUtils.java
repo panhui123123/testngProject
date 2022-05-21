@@ -41,6 +41,7 @@ public class HttpRequestUtils {
     // get请求带参数
     public static JSONObject httpGet(String url, String params) throws Exception {
         CloseableHttpClient httpClient = HttpClients.createDefault();
+        // params是一个符合json格式的字符串，这里转化为map
         Map<String, Object> paramMaps = JSON.parseObject(params);
         URIBuilder uriBuilder = new URIBuilder(url);
         for (Map.Entry<String, Object> entry: paramMaps.entrySet()){
