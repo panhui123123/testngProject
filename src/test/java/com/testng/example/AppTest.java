@@ -152,8 +152,7 @@ public class AppTest {
         Date date = new Date();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH_mm_ss");
         System.out.println(simpleDateFormat.format(date));
+        System.out.println("ceshi,ceshi");
         }
-
-
 
 }
