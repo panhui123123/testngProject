@@ -1,0 +1,2 @@
+2022-06-15 19_40_25: org.slf4j.impl.SimpleLogger(com.testng.utils.TestLogger): debug: debug信息
+2022-06-15 19_40_25: org.slf4j.impl.SimpleLogger(com.testng.utils.TestLogger): info: info信息

@@ -1,0 +1,1 @@
+{"uuid":"26b94f76-659c-4e7a-8445-20063855872f","name":"com.testng.testcases.FeedTestCase","children":["d2c636df-4c26-4170-847b-c686ce64f2b2"],"befores":[{"name":"userInfo","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1653220111353,"stop":1653220112534}],"afters":[],"start":1653220111288,"stop":1653220115199}

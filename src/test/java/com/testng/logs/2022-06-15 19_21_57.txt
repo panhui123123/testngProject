@@ -1,0 +1,1 @@
+2022-06-15 19_21_57:org.slf4j.impl.SimpleLogger(com.testng.utils.TestLogger):info:info信息
