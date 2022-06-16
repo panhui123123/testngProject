@@ -59,7 +59,7 @@ public class MysqlUtils {
         MysqlUtils mysqlUtils = new MysqlUtils("jdbc:mysql://rds7r40uo8u5s5xy0y9p0public.mysql.rds.aliyuncs.com",
                 "timing_backend", "timing_backend_gyag2s");
         List<Object> list;
-        list = (List<Object>) mysqlUtils.getSqlResult("select * from timing.t_user where phone in (\"10000000177\", \"10000000178\")");
+        list = mysqlUtils.getSqlResult("select * from timing.t_user where phone in (\"10000000177\", \"10000000178\")");
         System.out.println(list);
 //        Connection connection = null;
 //        Statement statement = null;

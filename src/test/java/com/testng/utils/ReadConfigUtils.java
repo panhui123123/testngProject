@@ -13,10 +13,22 @@ public class ReadConfigUtils {
     }
 
     public Object readConfigValue(String key) throws Exception {
-        Properties properties = new Properties();
-        FileInputStream fis = new FileInputStream("src\\test\\java\\com\\testng\\config\\" + this.configName);
-        properties.load(fis);
-        return properties.getProperty(key);
+        FileInputStream fis = null;
+        try{
+            Properties properties = new Properties();
+            fis = new FileInputStream("src\\test\\java\\com\\testng\\config\\" + this.configName);
+            properties.load(fis);
+            return properties.getProperty(key);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        finally {
+            if (fis != null){
+                fis.close();
+            }
+        }
+        return null;
     }
 
     public static void main(String[] args) throws Exception {

@@ -20,7 +20,9 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import org.testng.annotations.*;
 
+import javax.xml.crypto.Data;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 
@@ -32,12 +34,12 @@ public class AppTest {
     /**
      * Rigorous Test :-)
      */
-    @BeforeClass
+    @BeforeTest
     public void beforeClass(){
         System.out.println("类方法开始执行之前执行一遍");
     }
 
-    @AfterClass
+    @AfterTest
     public void afterClass(){
         System.out.println("所有类方法执行完成之后执行一遍");
     }
@@ -76,7 +78,7 @@ public class AppTest {
     @Test
     public void test005(){
         Object ob = null;
-        Assert.assertNull(ob);
+        Assert.assertNull(null);
 //        try {
 //            a = a;
 //        }
@@ -146,21 +148,11 @@ public class AppTest {
         httpclient.close();
     }
 
-//    public static void main(String[] args) {
-//        String path = System.getProperty("user.dir") + "\\" + "src";
-//        System.out.println(System.getProperty("user.dir"));
-//        System.out.println(path);
-//        String test = "unknown";
-//        try {
-//            int a = 1 / 0;
-//        }
-//        catch (Exception e){
-//            e.printStackTrace();
-//            test = "failed";
-//        }
-//        finally {
-//            System.out.println(test);
-//        }
+    public static void main(String[] args) {
+        Date date = new Date();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH_mm_ss");
+        System.out.println(simpleDateFormat.format(date));
+        }
 
 
 

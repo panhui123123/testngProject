@@ -107,7 +107,7 @@ public class ExcelUtils {
 
     public void writeExcel(Integer row, Integer column, String stringValue){
         FileInputStream fis = null;
-        FileOutputStream fos;
+        FileOutputStream fos = null;
         String projectPath = System.getProperty("user.dir");
         try {
             //1.读取excel
@@ -132,6 +132,9 @@ public class ExcelUtils {
                     if (fis != null) {
                         fis.close();
                     }
+                    if (fos != null){
+                        fos.close();
+                    }
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -140,9 +143,8 @@ public class ExcelUtils {
     }
 
     public static void main(String[] args) {
-        ExcelUtils excelUtils = new ExcelUtils("test_login.xlsx", "test_login");
+        ExcelUtils excelUtils = new ExcelUtils("test_feed.xlsx", "test_feed");
         // 数组不能直接打印，用Arrays转一下
         System.out.println(Arrays.deepToString(excelUtils.readExcel()));
-
     }
 }

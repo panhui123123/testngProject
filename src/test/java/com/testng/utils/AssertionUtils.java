@@ -11,6 +11,7 @@ public class AssertionUtils {
     private final String excelPath;
     private final String excelSheetName;
 
+    // 构造方法，需要传入测试数据的数组，excel的文件名路径、excel的表格名
     public AssertionUtils(Object[] testData, String excelPath, String excelSheetName){
         this.testData = testData;
         this.excelPath = excelPath;
