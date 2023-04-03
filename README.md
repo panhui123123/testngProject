@@ -1,2 +1,2 @@
 # testngProject
-来学java自动化
+java、testng实现接口自动化
